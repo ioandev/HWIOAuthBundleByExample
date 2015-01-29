@@ -1,0 +1,23 @@
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /connect
+
+facebook_login:
+    pattern: /login_facebook
+
+google_login:
+    pattern: /login_google
+
+live_login:
+    pattern: /login_live
+
+twitter_login:
+    pattern: /login_twitter
+
+the:
+    resource: "@TheBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: @AppBundle/Controller/
+    type:     annotation

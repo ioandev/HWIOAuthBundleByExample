@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div id="login_page">
+        <h1>Login</h1>
+        <a class="social-button facebook" id="facebook_login_button" href="{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}">Sign in with Facebook</a>
+        <a class="social-button google" href="{{ url("hwi_oauth_service_redirect", {service: "google"}) }}">Sign in with Google</a>
+        <a class="social-button live" href="{{ url("hwi_oauth_service_redirect", {service: "live"}) }}">Sign in with Live</a>
+        <a class="social-button twitter" href="{{ url("hwi_oauth_service_redirect", {service: "twitter"}) }}">Sign in with Twitter</a>
+
+
+
+
+
+        <div id="fb-root"></div>
+        <script>
+            window.fbAsyncInit = function() {
+                // init the FB JS SDK
+                FB.init({
+                    appId      : '{{ facebook_client_id }}',                        // App ID from the app dashboard
+                    channelUrl : '{{ site }}channel.php',      // Channel file for x-domain comms
+                    status     : true,                                 // Check Facebook Login status
+                    xfbml      : true                                  // Look for social plugins on the page
+                }, {scope: 'email'});
+            };
+
+            // Load the SDK asynchronously
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/all.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+
+            function fb_login() {
+                FB.getLoginStatus(function(response) {
+                    if (response.status === 'connected') {
+                        // connected
+                        console.log('Already connected, redirect to login page to create token.');
+                        document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                    } else {
+                        // not_authorized
+                        FB.login(function(response) {
+                            if (response.authResponse) {
+                                document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                            } else {
+                                console.log('Cancelled.');
+                            }
+                        }, {scope: 'email'});
+                    }
+                });
+            }
+
+            document.getElementById('facebook_login_button').onclick = function(e) {
+                e.preventDefault();
+                fb_login();
+            };
+        </script>
+    </div>
+{% endblock %}

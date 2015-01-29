@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% if app.user %}
+        <p>Logged in as: {{ app.session.get('user').nickname }}</p>
+    {% else %}
+        <p>Not logged in.</p>
+        <a href="{{ url("login") }}">Login</a>
+
+    {% endif %}
+{% endblock %}

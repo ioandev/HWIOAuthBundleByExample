@@ -1,0 +1,24 @@
+security:
+    providers:
+        my_custom_hwi_provider:
+            id: hwi_oauth.user.provider.entity
+    firewalls:
+        # ...
+        secured_area:
+            pattern:    ^/
+            oauth:
+                resource_owners:
+                    facebook:      /login_facebook
+                    google:        /login_google
+                    live:          /login_live
+                    twitter:       /login_twitter
+                login_path:        /
+                failure_path:      /login
+
+                oauth_user_provider:
+                    service: hwi_oauth.user.provider.entity
+
+            # Turn on anonymous for testings need.
+            anonymous: ~
+    access_control:
+        - { path: ^/user, roles: ROLE_USER }

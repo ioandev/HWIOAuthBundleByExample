@@ -1,0 +1,14 @@
+@import url("social-buttons.css");
+
+#login_page {
+    width: 235px;
+    margin: 60px auto 0 auto;
+    background-color: #ccc;
+    padding: 20px;
+    border-radius: 20px;
+}
+#login_page h1 {
+    margin: 5px;
+    padding-bottom: 10px;
+    text-align: center;
+}

@@ -1,0 +1,30 @@
+
+
+.social-button {
+    background-color:#ccc;
+    margin:0px 10px;
+    font-weight:bold;
+    color:black;
+    text-decoration: none;
+    text-indent: -9999px;
+    width:214px;
+    height:43px;
+    display:block;
+}
+.social-button.facebook {
+    background: url("../img/social_buttons.png") 0px 0px;
+}
+.social-button.twitter {
+    background: url("../img/social_buttons.png") 0px 91px;
+}
+.social-button.google {
+    background: url("../img/social_buttons.png") 0px 44px;
+}
+.social-button.live {
+    background: #ccc;
+    text-indent: 0px;
+    margin: 15px;
+    text-align: center;
+    padding-top: 0px;
+    margin: 2px 10px;
+}

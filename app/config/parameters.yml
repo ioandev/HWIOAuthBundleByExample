@@ -1,0 +1,21 @@
+# This file is auto-generated during the composer install
+parameters:
+    site: http://example.com/
+	
+    #Oauth2
+    facebook_client_id:     id
+    facebook_client_secret: secret
+    google_client_id: id
+    google_client_secret: secret
+    live_client_id: id
+    live_client_secret: secret
+    twitter_client_id: id
+    twitter_client_secret: secret
+    admins:
+        facebook:
+            - "myfacebook.id"
+
+twig:
+    globals:
+        facebook_client_id: %facebook_client_id%
+        site: %site%
